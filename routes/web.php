@@ -13,7 +13,7 @@ use App\Http\Controllers\BookController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', [BookController::class, 'bookRequest']);
 Route::group([], function(){
     Route::prefix('/')->group(function(){
         Route::get('add-fake-books', [BookController::class, 'addFakeBooks']);
