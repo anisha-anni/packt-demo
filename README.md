@@ -1,7 +1,7 @@
 Steps to setup project:
 
 Create a database named as packt_demo.
-clone the project from git on your local system.
+clone the project from git on your local system (https://github.com/anisha-anni/packt-demo.git).
 rename .env.example file to .env (Note: default laravel .env.example file is renamed as .X_env.example)
 open terminal and go to the project location root directory.
 You need to run the command php artisan migrate to create tables.
