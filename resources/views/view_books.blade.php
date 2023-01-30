@@ -119,11 +119,11 @@ $timezone = 'Asia/Kolkata';
                                         if($bookDetail->image != '' || $bookDetail->image != null){
                                         $coverImage = url($bookDetail->image);
                                     ?>
-                                        <a id="book_{{$bookDetail->id}}" class="viewBookDetail" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-name="{{$bookDetail->title}}"><img class="img-circle avatar" src="{{$coverImage}}" onerror="this.src='{{ url("/public/assets/images/book_thumbnail_small.png") }}'" style="width:40px; height:40px; margin: auto;" alt="Cover Image"></a>
+                                        <a id="book_{{$bookDetail->id}}" class="viewBookDetail" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-name="{{$bookDetail->title}}"><img class="img-circle avatar" src="{{$coverImage}}" onerror="this.src='{{ url("/assets/images/book_thumbnail_small.png") }}'" style="width:40px; height:40px; margin: auto;" alt="Cover Image"></a>
                                     <?php
                                     }else{
                                     ?>
-                                        <a id="book_{{$bookDetail->id}}" class="viewBookDetail" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-name="{{$bookDetail->title}}"><img class="img-circle avatar" src="{{url('/public/assets/images/book_thumbnail_small.png')}}" style="width:40px; height:40px; margin: auto;" alt="Cover Image"></a>
+                                        <a id="book_{{$bookDetail->id}}" class="viewBookDetail" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-name="{{$bookDetail->title}}"><img class="img-circle avatar" src="{{url('/assets/images/book_thumbnail_small.png')}}" style="width:40px; height:40px; margin: auto;" alt="Cover Image"></a>
                                     <?php
                                     }
                                     ?>
@@ -502,9 +502,5 @@ $(document).on('click','#confirm-handler', function(){
         }
         return true;
     }
-
-    $('#saveBook').on('click', function(){
-        $('#addBookForm').submit();
-    });
 </script>
 @endsection

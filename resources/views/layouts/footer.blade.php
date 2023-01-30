@@ -47,7 +47,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" id="cancelEditBook" data-dismiss="modal">Cancel</button>
-                <input type="button" class="btn btn-primary" id="editBook" value="Save">
+                <input type="submit" class="btn btn-primary" id="editBook" value="Save">
             </div>
             </form>
         </div>
@@ -77,7 +77,7 @@
                         <div class="ibox-content" style="padding: 10px 0px 5px 0px;">
                             <div class="row">
                             <div class="col-sm-3">
-                                <center>
+                                <centre>
                                 <div class="form-group">
                                 <div class="image-upload" id="imageUpload" style="height: 110px; width: 110px;">
                                     <input type="file" name="cover_image" id="cover_image" accept="image/*">
@@ -89,7 +89,7 @@
                                 </div>
                                 <p class="errorMsg" id="error_cover_image"></p>
                                 </div>
-                            </center>
+                                </centre>
                             </div>
                             <div class="col-sm-9" style="padding:0px;">
                                 <div class="row-fluid">
@@ -97,8 +97,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label">Title<b><span class="text-danger">*</span></b></label>
                                             <div class="col-lg-8">
-                                            <input type="text" name="title" id="title" class="form-control" maxlength="255" onblur="trim(this)">
-                                            <p class="errorMsg" id="error_title"></p>
+                                            <input type="text" name="title" id="title" class="form-control" onblur="trim(this)">
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +106,6 @@
                                             <label class="col-lg-4 col-form-label">Author<b><span class="text-danger">*</span></b></label>
                                             <div class="col-lg-8">
                                                 <input type="text" name="author" id="author" class="form-control" onblur="trim(this)">
-                                                <p class="errorMsg" id="error_author"></p>
                                             </div>                                      
                                         </div>
                                     </div>
@@ -120,7 +118,6 @@
                                         <label class="col-lg-3 col-form-label">Genre<b><span class="text-danger">*</span></b></label>
                                         <div class="col-lg-9">
                                             <input type="text" name="genre" id="genre" class="form-control" onblur="trim(this)">
-                                            <p class="errorMsg" id="error_genre"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +126,6 @@
                                         <label class="col-lg-3 col-form-label">ISBN<b><span class="text-danger">*</span></b></label>
                                         <div class="col-lg-9">
                                         <input type="text" name="isbn" id="edit_isbn" class="form-control" onkeypress="return isNumber(event)" maxlength="13" onblur="trim(this)">
-                                        <span id="error_edit_isbn" class="errorMsg"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +145,6 @@
                                         <label class="col-lg-4 col-form-label">Publisher</label>
                                         <div class="col-lg-8">
                                         <input type="text" class="form-control" name="publisher" id="publisher">
-                                        <span id="error_publisher" class="errorMsg"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -158,19 +153,18 @@
                                         <label class="col-lg-4 mt-1 col-form-label">Publication Date (d/m/Y)<b><span class="text-danger">*</span></b></label>
                                         <div class="col-lg-8 mt-1">
                                             <div class="input-group date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar" id="publication_calendar"></i></span><input class="form-control" type="text" name="published" id="published">
+                                                <span class="input-group-addon"><i class="fa fa-calendar" id="publication_calendar"></i></span>
+                                                <input class="form-control" type="text" name="published" id="published">
                                             </div>
-                                            <p class="errorMsg" id="error_publication"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12-fluid">
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">Description</label>
+                                        <label class="col-lg-4 col-form-label">Description <b><span class="text-danger">*</span></b></label>
                                         <div class="col-lg-8">
                                             <textarea rows="4" name="description" id="description" class="form-control" onblur="trim(this)">
                                             </textarea>
-                                            <span id="error_description" class="errorMsg"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +176,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" id="cancelSaveBook" data-dismiss="modal">Cancel</button>
-                <input type="button" class="btn btn-primary" id="saveBook" value="Save">
+                <input type="submit" class="btn btn-primary" id="saveBook" value="Save">
             </div>
             </form>
         </div>
@@ -231,15 +225,178 @@
 <script src="{{ url('assets/js/toastr.min.js') }}"></script>
 <script src="{{ URL::asset('assets/jquery_validation/jquery.validate.min.js') }}"></script>
 <script>
-
-
-    $('.date-range-piker-field').bind('keypress cut copy paste', function(e) {
-        e.preventDefault(); 
+$(document).ready(function(){
+    $("#addBookForm").validate({
+        rules: {
+            title : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            author : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            genre : {
+                required: true,
+                minlength: 3,
+                maxlength: 255,
+            },
+            isbn : {
+                required: true,
+                number: true,
+                maxlength: 13,
+            },
+            publisher : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            published : {
+                required: true
+            },
+            description : {
+                required: true,
+                minlength: 10
+            }
+        },
+        messages: {
+            title: {
+                required: "Please enter book title",
+                minlength: "Title must be at least 5 characters long",
+                maxlength: "Title must be less than or equal to 255 characters",
+            },
+            author: {
+                required: "Please enter author name",
+                minlength: "Author name must be at least 5 characters long",
+                maxlength: "Author name must be less than or equal to 255 characters",
+            },
+            genre: {
+                required: "Please enter book genre",
+                minlength: "Genre must be at least 3 characters long",
+                maxlength: "Genre must be less than or equal to 255 characters",
+            },
+            isbn: {
+                required: "Please enter isbn number",
+                number: "Only numbers allowed",
+                maxlength: "isbn number must be less than or equal to 13 characters",
+            },
+            publisher: {
+                required: "Please enter publisher name",
+                minlength: "Publisher name must be at least 5 characters long",
+                maxlength: "Publisher name must be less than or equal to 255 characters",
+            },
+            published: {
+                required: "Please enter date of publication"
+            },
+            description: {
+                required: "Please enter description",
+                minlength: "Description must be at least 10 characters long"
+            }
+        }
     });
-    $('#dob, #doj, #edit_dob, #edit_doj').bind('keypress cut copy paste', function(e) {
-        e.preventDefault(); 
+
+    $("#editBookForm").validate({
+        rules: {
+            title : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            author : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            genre : {
+                required: true,
+                minlength: 3,
+                maxlength: 255,
+            },
+            isbn : {
+                required: true,
+                number: true,
+                maxlength: 13,
+            },
+            publisher : {
+                required: true,
+                minlength: 5,
+                maxlength: 255,
+            },
+            published : {
+                required: true
+            },
+            description : {
+                required: true,
+                minlength: 10
+            },
+        },
+        messages: {
+            title: {
+                required: "Please enter book title",
+                minlength: "Title must be at least 5 characters long",
+                maxlength: "Title must be less than or equal to 255 characters",
+            },
+            author: {
+                required: "Please enter author name",
+                minlength: "Author name must be at least 5 characters long",
+                maxlength: "Author name must be less than or equal to 255 characters",
+            },
+            genre: {
+                required: "Please enter book genre",
+                minlength: "Genre must be at least 3 characters long",
+                maxlength: "Genre must be less than or equal to 255 characters",
+            },
+            isbn: {
+                required: "Please enter isbn number",
+                number: "Only numbers allowed",
+                maxlength: "isbn number must be less than or equal to 13 characters",
+            },
+            publisher: {
+                required: "Please enter publisher name",
+                minlength: "Publisher name must be at least 5 characters long",
+                maxlength: "Publisher name must be less than or equal to 255 characters",
+            },
+            published: {
+                required: "Please enter date of publication"
+            },
+            description: {
+                required: "Please enter description",
+                minlength: "Description must be at least 10 characters long"
+            }
+        }
+    });
+});
+
+    $('#new_cover_image').click(function(){
+        $('#cover_image').click();
     });
 
+    $(function(){
+      $("#cover_image").change(function(){
+        var ext = $('#cover_image').val().split('.').pop().toLowerCase();
+        if($.inArray(ext, ['png','jpg','jpeg']) == -1) {
+            $('#cover_image').val(null);
+            $('#error_cover_image').text('Only .jpg, .jpeg, .png image allowed.');
+            return false;
+        }else{
+          $('#error_cover_image').html('');
+          var path =  readURL(this, "new_cover_image");
+        }
+      });
+      var imgsrc = $('#new_cover_image').attr('src');
+    });
+
+    function readURL(input,container) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#"+container).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
  
     function dateFormat(added_on){
         var date = new Date(added_on + 'Z');
@@ -277,6 +434,18 @@
         toastr.success(data.message, data.strong);
         }, 300);
     }
+
+    $("#published").datepicker({
+        format: 'dd/mm/yyyy', 
+        autoclose: true, 
+        todayHighlight: true,
+        endDate: "today"
+    });
+
+    $('#publication_calendar').on('click', function(){
+        $('#published').focus();
+    });
+
 </script>
 </body>
 </html>

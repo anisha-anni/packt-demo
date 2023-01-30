@@ -122,7 +122,7 @@ class BookController extends Controller {
         'author'        => $author,
         'genre'         => $genre,
         'description'   => $description,
-        'isbn'          => $address,
+        'isbn'          => $isbn,
         'image'         => $coverPicURL,
         'published'     => $published,
         'publisher'     => $publisher,
@@ -154,7 +154,7 @@ class BookController extends Controller {
             ->with('bookDetails', $bookDetails);
   }
 
-  public function ediBookInfo(Request $request) {
+  public function editBookInfo(Request $request) {
     $validator = Validator::make($request->all(), [
         'id' => 'required'
         ]);
@@ -163,10 +163,9 @@ class BookController extends Controller {
         $errorArray = json_decode($validator->errors(), true);
         $error      = current($errorArray);
         $message    = $error[0];
+        echo "Check 1";die;
         return 0;
-      }
-
-      
+      }      
       $id =  trim($request->id);
       $title = trim($request->title);
       $dirName = strtolower(str_replace(' ', '_', $title));
@@ -203,7 +202,7 @@ class BookController extends Controller {
             'author'        => $author,
             'genre'         => $genre,
             'description'   => $description,
-            'isbn'          => $address,
+            'isbn'          => $isbn,
             'image'         => $coverPicURL,
             'published'     => $published,
             'publisher'     => $publisher,
@@ -215,7 +214,7 @@ class BookController extends Controller {
           'author'        => $author,
           'genre'         => $genre,
           'description'   => $description,
-          'isbn'          => $address,
+          'isbn'          => $isbn,
           'published'     => $published,
           'publisher'     => $publisher,
           'updated_at'    => $updatedAt

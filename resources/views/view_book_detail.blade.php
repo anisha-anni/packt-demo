@@ -7,7 +7,7 @@
                         <div class="ibox-content" style="padding: 10px 0px 5px 0px;">
                             <div class="row">
                             <div class="col-sm-3">
-                                <center>
+                                <centre>
                                 <div class="form-group">
                                 <div class="image-upload" id="imageUpload" style="height: 110px; width: 110px;">
                                     @if($bookDetails->image!= '' || $bookDetails->image != null)
@@ -17,7 +17,7 @@
                                     @endif
                                 </div>
                                 </div>
-                            </center>
+                                </centre>
                             </div>
                             <div class="col-sm-9" style="padding:0px;">
                                 <div class="row-fluid">
@@ -111,7 +111,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-4 col-form-label">Description</label>
                                         <div class="col-lg-8">
-                                        <textarea rows="4" class="form-control" readonly>{{$bookDetails->description}}</textarea>
+                                        <textarea rows="4" class="form-control" readonly style="width:100%;">{{$bookDetails->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>

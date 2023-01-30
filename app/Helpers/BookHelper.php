@@ -1,7 +1,6 @@
 <?php
 namespace App\Helpers;
 use DB;
-use App\Models\Employee;
 use Session;
 //require 'vendor/autoload.php';  
 use Image;

@@ -554,10 +554,7 @@ textarea{
   visibility: inherit !important;
 }
 .rounded-circle{
-  background: url("/public/assets/images/default_user_pic.png");
-}
-.viewImageToggle{
-  background: url("/public/assets/images/id_placeholder.jpg"); 
+  background: url("/assets/images/book_thumbnail.png");
 }
 .ellipsis {
     position: relative;
@@ -574,14 +571,4 @@ textarea{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.country-list{
-  min-width: 200px !important;
-}
-.callChatRate{
-  margin-top:-1% !important;
-}
-.clockpicker-popover {
-  z-index: 999999 !important;
-  top: 40% !important;
 }
